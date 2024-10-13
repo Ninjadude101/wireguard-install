@@ -1,8 +1,16 @@
 # WireGuard installer
 
-![Lint](https://github.com/angristan/wireguard-install/workflows/Lint/badge.svg)
-[![Say Thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/angristan)
+**This project is based on [Wireguard-Installer](https://github.com/angristan/wireguard-install/) but edited to remove the need for user interaction, with the intention of deploying automatically on cloud servers when they are created e.g. by API.**
 
+Various changes have been made that apply to my own needs, and may not be suitable for every use case. Such changes include:
+* Removal of all IPv6 references - only IPv4 is used
+* Automatic randomized choice of class-A internal (WG) subnet, using a /30 mask instead of /24
+* Only a single client is created / needed / supported
+* Automatically reboots the server if necessary (if wg0 does not start) instead of asking the user to
+
+The below is the original Readme from the upstream project at the time of forking.
+
+---
 **This project is a bash script that aims to setup a [WireGuard](https://www.wireguard.com/) VPN on a Linux server, as easily as possible!**
 
 WireGuard is a point-to-point VPN that can be used in different ways. Here, we mean a VPN as in: the client will forward all its traffic through an encrypted tunnel to the server.
